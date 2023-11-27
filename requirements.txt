@@ -1,0 +1,7 @@
+virtualenv
+selenium==4.6.0
+pytest
+pytest-html
+pytest-xdist
+python-dotenv
+webdriver-manager
