@@ -23,7 +23,7 @@ This automated test performs the following steps:
   - [Installation](#installation)
 - [Usage](#usage)
 - [Running Tests](#running-tests)
-- [Logging](#logging)
+
 
 
 ## Getting Started
@@ -48,13 +48,24 @@ Before you begin, make sure you have the following installed:
    ```
     git clone https://github.com/PythonNovice5/lynx_tests_assignment.git
     cd lynx_tests_assignment
+    python -m venv
+    cd venv/Scripts/
+    activate.bat (press enter)
+    pip install -r requirements.txt   
   ```
 ## Running Tests
-
+   **1. Running via pytest command on Windows/Linux** 
   
+  ```
+  Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
+  pytest -v -s --html=report.html tests\test_registration.py
+  ```
 
-To change, edit `logback.xml`.
-
-
+  **2. Running via maven command on Windows/Linux as HeadLess browser**
   
+  ```
+  Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
+  pytest -v -s --headless --html=report.html tests\test_registration.py
+  ``` 
+ 
 
