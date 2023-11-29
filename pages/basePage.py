@@ -1,6 +1,4 @@
 import pytest
-
-from utilities.logger_config import configure_logger
 from utilities.object_sync import ObjectSync
 
 @pytest.mark.usefixtures("setup")

@@ -4,7 +4,6 @@ from pages.registerationPage import Registration
 from pages.setup import SetUp
 from utilities.utils import read_data_from_csv
 
-
 class TestRegistration(BasePage):
     def get_test_data_for_description(self,description):
         csv_data = read_data_from_csv('test_data.csv')
