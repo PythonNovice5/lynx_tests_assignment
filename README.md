@@ -54,18 +54,29 @@ Before you begin, make sure you have the following installed:
     pip install -r requirements.txt   
   ```
 ## Running Tests
-   **1. Running via pytest command on Windows/Linux** 
+   **1. Running all tests via pytest command on Windows/Linux** 
   
   ```
   Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
   pytest -v -s --html=report.html tests\test_registration.py
   ```
+   **2. Running critical tests via pytest command on Windows/Linux** 
+  
+  ```
+  Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
+  pytest -v -s --html=report.html -m critical
+  ```
 
-  **2. Running via maven command on Windows/Linux as HeadLess browser**
+  **3. Running  all tests via pytest command on Windows/Linux as HeadLess browser**
   
   ```
   Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
   pytest -v -s --headless --html=report.html tests\test_registration.py
   ``` 
- 
+  **4. Running  critical tests via pytest command on Windows/Linux as HeadLess browser**
+  
+  ```
+  Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
+  pytest -v -s --headless --html=report.html -m critical
+  ``` 
 
