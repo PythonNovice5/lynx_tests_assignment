@@ -48,30 +48,39 @@ Before you begin, make sure you have the following installed:
    ```
     git clone https://github.com/PythonNovice5/lynx_tests_assignment.git
     cd lynx_tests_assignment
-    python -m venv
-    cd venv/Scripts/
-    activate.bat (press enter)
-    pip install -r requirements.txt   
+   ```
+**Set up Virtual env and install the dependencies [Windows]** 
+   ```
+    python -m venv venv 
+    venv\Scripts\activate.bat
+    python -m pip install -r requirements.txt   
   ```
+**Set up Virtual env and install the dependencies [Linux]** 
+   ```
+    python3 -m venv venv 
+    source venv/bin/activate
+    python -m pip install -r requirements.txt
+   ```
+
 ## Running Tests
    **1. Running all tests via pytest command on Windows/Linux** 
   
   ```
   Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
-  pytest -v -s --html=report.html tests\test_registration.py
+  python -m pytest -v -s --html=report.html tests/test_registration.py
   ```
    **2. Running critical tests via pytest command on Windows/Linux** 
   
   ```
   Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
-  pytest -v -s --html=report.html -m critical
+  python -m pytest -v -s --html=report.html -m critical
   ```
 
   **3. Running  all tests via pytest command on Windows/Linux as HeadLess browser**
   
   ```
   Go to project directory lynx_tests_assignment (cd lynx_tests_assignment)
-  pytest -v -s --headless --html=report.html tests\test_registration.py
+  pytest -v -s --headless --html=report.html tests/test_registration.py
   ``` 
   **4. Running  critical tests via pytest command on Windows/Linux as HeadLess browser**
   
