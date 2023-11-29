@@ -7,7 +7,7 @@ from utilities.object_sync import ObjectSync
 class BasePage(ObjectSync):
     # def __init__(self, driver):
     #     self.driver = driver
-    logger = configure_logger()
+    # logger = configure_logger()
 
     def verifyPageURL(self,url):
         assert url in self.driver.current_url

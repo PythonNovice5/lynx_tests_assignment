@@ -1,13 +1,13 @@
 # wait_conditions.py
 
-import logging
+
 from selenium.common.exceptions import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
-from utilities.logger_config import configure_logger
+import logging
+LOGGER = logging.getLogger(__name__)
 
 
 
@@ -15,9 +15,9 @@ from utilities.logger_config import configure_logger
 class ObjectSync:
     # def __init__(self, driver, default_timeout=10):
     #     self.driver = driver
-    logger = configure_logger()
+    # logger = configure_logger()
     default_timeout = 10
-    logger = logging.getLogger(__name__)
+    logger=LOGGER
 
     def wait_for_element_to_be_clickable(self, locator, timeout=None):
         timeout = timeout or self.default_timeout
@@ -56,11 +56,12 @@ class ObjectSync:
             self.logger.exception(f"Error clicking element: {locator}")
             raise e
 
-    def enter_value_into_element(self, locator, keys, timeout=10):
+    def enter_value_into_element(self, locator, keys,attr=None, timeout=10):
         try:
             element = self.wait_for_element_to_be_visible(locator, timeout)
             element.clear()
             element.send_keys(keys)
+            self.logger.info(f"Entered {attr} as: {keys}")
         except WebDriverException as e:
             self.logger.exception(f"Error sending keys to element: {locator}")
             raise e
