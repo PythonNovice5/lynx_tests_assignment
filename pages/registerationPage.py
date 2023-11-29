@@ -70,6 +70,7 @@ class Registration(BasePage):
     multiple_nationality_dropdown = (By.ID,"multiplenationality")
     # own_account_warning = (By.XPATH,"//form[contains(@class,'invalid-accepted')]")
     own_account_warning=(By.XPATH,"//div[@ng-show='person.owner.self===false']")
+    box_SSN = (By.NAME,"taxid_usperson")
 
     def handle_cookies(self):
         try:
@@ -111,6 +112,11 @@ class Registration(BasePage):
         if 'taxid_secondary' in data.keys():
             self.select_button("taxid_secondary",data['taxid_secondary'])
 
+    def verify_presence_of_SSN_box(self):
+        if self.wait_and_find_element(self.box_SSN):
+            return True
+        else:
+            return False
 
     # def enter_job_information(self,data):
     #     self.logger.info("Entering Job related information ----")
