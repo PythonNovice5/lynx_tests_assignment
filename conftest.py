@@ -48,7 +48,7 @@ def setup(request):
     request.cls.driver = driver
     yield
     driver.execute_script("localStorage.clear();")
-    # driver.quit()
+    driver.quit()
 
 
 @pytest.fixture(params=URLUnderTest.registration_page_url)
