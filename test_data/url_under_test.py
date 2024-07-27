@@ -1,2 +1,2 @@
 class URLUnderTest:
-    sub_url = [{"example_url": ""}]
+    registration_page_url= [{"registrationURL" : "/wertpapierdepot/depoteroeffnung/antrag"}]

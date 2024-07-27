@@ -1,5 +1,5 @@
 virtualenv
-selenium
+selenium==4.6.1
 pytest
 pytest-html
 pytest-xdist

@@ -7,8 +7,9 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import logging
-
 LOGGER = logging.getLogger(__name__)
+
+
 
 
 class ObjectSync:
@@ -16,7 +17,7 @@ class ObjectSync:
     #     self.driver = driver
     # logger = configure_logger()
     default_timeout = 10
-    logger = LOGGER
+    logger=LOGGER
 
     def wait_for_element_to_be_clickable(self, locator, timeout=None):
         timeout = timeout or self.default_timeout
@@ -25,9 +26,7 @@ class ObjectSync:
                 EC.element_to_be_clickable(locator)
             )
         except TimeoutException as e:
-            self.logger.exception(
-                f"Timed out waiting for element to be clickable: {locator}"
-            )
+            self.logger.exception(f"Timed out waiting for element to be clickable: {locator}")
             raise e
 
     def wait_for_element_to_be_visible(self, locator, timeout=10):
@@ -36,10 +35,9 @@ class ObjectSync:
                 EC.visibility_of_element_located(locator)
             )
         except WebDriverException as e:
-            self.logger.exception(
-                f"Timed out waiting for element to be visible: {locator}"
-            )
+            self.logger.exception(f"Timed out waiting for element to be visible: {locator}")
             raise e
+
 
     def wait_for_element_to_be_invisible(self, locator, timeout=None):
         try:
@@ -47,25 +45,18 @@ class ObjectSync:
                 EC.invisibility_of_element_located(locator)
             )
         except WebDriverException as e:
-            self.logger.exception(
-                f"Timed out waiting for element to be invisible: {locator}"
-            )
+            self.logger.exception(f"Timed out waiting for element to be invisible: {locator}")
             raise e
 
     def click_web_element(self, locator, timeout=10):
         try:
             element = self.wait_for_element_to_be_clickable(locator, timeout)
-            # self.scrollToElement(locator)
             element.click()
-        except (
-            TimeoutException,
-            ElementClickInterceptedException,
-            NoSuchElementException,
-        ) as e:
+        except (TimeoutException, ElementClickInterceptedException, NoSuchElementException) as e:
             self.logger.exception(f"Error clicking element: {locator}")
             raise e
 
-    def enter_value_into_element(self, locator, keys, attr=None, timeout=10):
+    def enter_value_into_element(self, locator, keys,attr=None, timeout=10):
         try:
             element = self.wait_for_element_to_be_visible(locator, timeout)
             element.clear()
@@ -75,7 +66,7 @@ class ObjectSync:
             self.logger.exception(f"Error sending keys to element: {locator}")
             raise e
 
-    def get_text_of_element(self, locator, timeout=5) -> str:
+    def get_text_of_element(self, locator, timeout=None) -> str:
         try:
             element = self.wait_for_element_to_be_visible(locator, timeout)
             return element.text
@@ -92,15 +83,6 @@ class ObjectSync:
             self.logger.exception(f"Timed out waiting for element presence: {locator}")
             raise e
 
-    def wait_and_find_elements(self, locator, timeout=10) -> WebElement:
-        try:
-            return WebDriverWait(self.driver, timeout).until(
-                EC.presence_of_all_elements_located(locator)
-            )
-        except WebDriverException as e:
-            self.logger.exception(f"Timed out waiting for element presence: {locator}")
-            raise e
-
-    def scrollToElement(self, element):
+    def scrollToElement(self,element):
         actions = ActionChains(self.driver)
-        actions.move_to_element_with_offset(element, 5, 5).perform()
+        actions.move_to_element_with_offset(element,5,5).perform()
